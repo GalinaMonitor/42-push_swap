@@ -8,14 +8,14 @@ LIBFT = libft/libft.a
 
 HEADER = push_swap.h
 
-PUSH_SWAP_SRC = push_swap.c
+PUSH_SWAP_SRC = push_swap.c stack.c move.c sort_three.c
 
 SOURCES_LIBFT = $(addprefix $(DIR_LIBFT), $(LIBFT))
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(PUSH_SWAP_SRC)
-	@$(CC) $(FLAGS) $(PUSH_SWAP_SRC) $(LIBFT) -o $(NAME)
+	@$(CC) $(FLAGS) $(PUSH_SWAP_SRC) $(LIBFT) -o $(NAME) -g
 	@echo "prog is ready to use"
 
 $(LIBFT) :

@@ -13,6 +13,23 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	last->next = new;
 }
 
+int	if_sort_stack(t_stack *stack)
+{
+	int biggest;
+
+	biggest = stack->nbr;
+	while(stack->next != NULL)
+	{
+		stack = stack->next;
+		if (stack->nbr > biggest)
+			biggest = stack->nbr;
+		else
+			return 0;
+	}
+	return 1;
+}
+
+
 // void	ft_stackclear(t_stack **stack, void (*del)(void*))
 // {
 // 	if (*stack != NULL)
@@ -34,7 +51,9 @@ void	ft_stackprint(t_stack *stack)
 {
 	if (stack != NULL)
 	{
-		printf("%d", stack->nbr);
+		printf("\nnbr = %d ", stack->nbr);
+		printf(" order = %d", stack->order);
+		printf(" flag = %d", stack->flag);
 		if (stack->next)
 			return (ft_stackprint(stack->next));
 	}
@@ -83,7 +102,7 @@ t_stack **ft_fillstack(int *sorted, int *not_sorted, int size)
 		{
 			if (not_sorted[ind_not_sorted] == sorted[ind_sorted])
 			{
-				ft_stackadd_back(stack, ft_stacknew(not_sorted[ind_not_sorted], ind_sorted));
+				ft_stackadd_back(stack, ft_stacknew(not_sorted[ind_not_sorted], ind_sorted + 1));
 				break;
 			}
 			ind_sorted++;
@@ -105,6 +124,7 @@ t_stack	*ft_stacknew(int nbr, int order)
 	stack->nbr = nbr;
 	stack->order = order;
 	stack->next = NULL;
+	stack->flag = 0;
 	return (stack);
 }
 
@@ -121,3 +141,41 @@ t_stack	*ft_stacknew(int nbr, int order)
 // 	return (0);
 // }
 
+int	stack_length(t_stack *stack)
+{
+	if (stack == NULL)
+		return 1;
+	if (stack->next == NULL)
+		return 1;
+	return (1 + stack_length(stack->next));
+}
+
+int	ft_max_ind(t_stack *stack, int key)
+{
+	int max_ind = 0;
+
+	if (stack == NULL)
+		return 0;
+	while (stack != NULL)
+	{
+		if (max_ind < stack->order && stack->flag == key)
+			max_ind = stack->order;
+		stack = stack->next;
+	}
+	return max_ind;
+}
+
+int	ft_min_ind(t_stack *stack, int key)
+{
+	int max_ind = stack->order;
+
+	if (stack == NULL)
+		return 0;
+	while (stack != NULL)
+	{
+		if (max_ind > stack->order && stack->flag == key)
+			max_ind = stack->order;
+		stack = stack->next;
+	}
+	return max_ind;
+}
