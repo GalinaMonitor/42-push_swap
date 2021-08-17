@@ -45,10 +45,10 @@ void	ft_sort(t_stack **stack_a, int count)
 {
 	t_stack **stack_b;
 
-	int temp_a = 0;
-	int temp_b = 0;
-	int middle_a = 0;
-	int middle_b = 0;
+	int temp_middle = 0;
+	int temp_count = 0;
+	int middle = 0;
+
 	int key = 0;
 
 	printf("\n count arg = %d\n", count);
@@ -57,38 +57,53 @@ void	ft_sort(t_stack **stack_a, int count)
 
 	while(if_sort_stack(stack_a[0]) != 1)
 	{
-		middle_a = (ft_max_ind(stack_a[0], key) - ft_min_ind(stack_a[0], key) + 1)/2;
-		temp_a = middle_a;
-		while (temp_a)
+		middle = (ft_max_ind(stack_a[0], key) + ft_min_ind(stack_a[0], key))/2;
+		temp_middle = (ft_max_ind(stack_a[0], key) - ft_min_ind(stack_a[0], key))/2 + 1;
+		// if (temp_middle < 3)
+		// {
+		// 	middle = ft_min_ind(stack_a[0], key) + 2;
+		// 	temp_middle = 3;
+		// }
+
+		temp_count = stack_length(stack_a[0]);
+		while (temp_middle && temp_count && if_sort_stack(stack_a[0]) == 0)
 		{
-			if (stack_a[0]->order <= middle_a || stack_a[0]->flag == key)
+			if (stack_a[0]->order <= middle && stack_a[0]->flag == key)
 			{
 				move_pb(stack_a, stack_b);
-				temp_a--;
+				temp_middle--;
 			}
-			move_ra_rb_rr(stack_a);
+			else
+			{
+				move_ra_rb_rr(stack_a);
+				temp_count--;
+			}
 		}
-
-		middle_b = (ft_max_ind(stack_b[0], key) - ft_min_ind(stack_b[0], key) + 1)/2;
-		temp_b = middle_b;
+		if(key > 0)
+			key--;
+		ft_down_sorted(stack_a);
 		while(stack_length(stack_b[0]) > 3)
 		{
-			while (temp_b)
+			middle = (ft_max_ind(stack_b[0], key) + ft_min_ind(stack_b[0], key))/2;
+			temp_middle = (ft_max_ind(stack_b[0], key) - ft_min_ind(stack_b[0], key))/2 + 1;
+			temp_count = stack_length(stack_a[0]);
+			while (temp_middle && temp_count)
 			{
-				if (stack_b[0]->order > middle_b)
+				if (stack_b[0]->order > middle)
 				{
 					stack_b[0]->flag+= 1;
 					move_pa(stack_a, stack_b);
-					temp_b--;
+					temp_middle--;
 				}
-				move_ra_rb_rr(stack_b);
+				else
+				{
+					move_ra_rb_rr(stack_b);
+					temp_count--;
+				}
 			}
 			key+= 1;
 		}
-
-
 		sort_three(stack_b);
-
 		while(stack_b[0])
 		{
 			stack_b[0]->flag = -1;
@@ -96,8 +111,6 @@ void	ft_sort(t_stack **stack_a, int count)
 			move_ra_rb_rr(stack_a);
 		}
 	}
-
-
 	printf("\n\nStack A");
 	ft_stackprint(*stack_a);
 	printf("\n\nStack B");

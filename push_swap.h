@@ -27,4 +27,5 @@ int		if_sort_stack_reverse(t_stack *stack);
 int		stack_length(t_stack *stack);
 int	ft_max_ind(t_stack *stack, int key);
 int	ft_min_ind(t_stack *stack, int key);
+void	ft_down_sorted(t_stack **stack);
 // 2.

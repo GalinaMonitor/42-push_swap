@@ -16,13 +16,18 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 int	if_sort_stack(t_stack *stack)
 {
 	int biggest;
+	int order;
 
 	biggest = stack->nbr;
+	order = stack->order;
 	while(stack->next != NULL)
 	{
 		stack = stack->next;
-		if (stack->nbr > biggest)
+		if (stack->nbr > biggest && stack->order == order + 1)
+		{
 			biggest = stack->nbr;
+			order+=1;
+		}
 		else
 			return 0;
 	}
@@ -178,4 +183,27 @@ int	ft_min_ind(t_stack *stack, int key)
 		stack = stack->next;
 	}
 	return max_ind;
+}
+
+void	ft_down_sorted(t_stack **stack)
+{
+	t_stack *last;
+	t_stack *check;
+	int flag = 0;
+
+	check = stack[0];
+	while (check != NULL)
+	{
+		if (check->flag == -1)
+			flag = 1;
+		check = check->next;
+	}
+	last = ft_stacklast(stack[0]);
+	if (last->flag != -1 && flag == 1)
+	{
+		move_rra_rrb_rrr(stack);
+		ft_down_sorted(stack);
+	}
+	else
+		return;
 }
