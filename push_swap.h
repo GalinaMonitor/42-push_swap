@@ -22,10 +22,14 @@ void	move_rra_rrb_rrr(t_stack	**stack);
 void	move_ra_rb_rr(t_stack	**stack);
 void	move_pb(t_stack	**stack_b, t_stack	**stack_a);
 int		if_sort_stack(t_stack *stack);
-void	sort_three(t_stack **stack);
 int		if_sort_stack_reverse(t_stack *stack);
 int		stack_length(t_stack *stack);
 int	ft_max_ind(t_stack *stack, int key);
 int	ft_min_ind(t_stack *stack, int key);
 void	ft_down_sorted(t_stack **stack);
+int	ft_max_key(t_stack *stack);
+void	sort_five_and_less(t_stack **stack_a, t_stack **stack_b, int key);
+void	sort_four(t_stack **stack_a, t_stack **stack_b, int key);
+void	sort_three(t_stack **stack);
+void	sort_five(t_stack **stack_a, t_stack **stack_b, int key);
 // 2.

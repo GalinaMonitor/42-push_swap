@@ -20,6 +20,8 @@ int	if_sort_stack(t_stack *stack)
 
 	biggest = stack->nbr;
 	order = stack->order;
+	if (stack->next == NULL)
+		return 0;
 	while(stack->next != NULL)
 	{
 		stack = stack->next;
@@ -30,6 +32,7 @@ int	if_sort_stack(t_stack *stack)
 		}
 		else
 			return 0;
+		// printf("%d", stack->order);
 	}
 	return 1;
 }
@@ -149,7 +152,7 @@ t_stack	*ft_stacknew(int nbr, int order)
 int	stack_length(t_stack *stack)
 {
 	if (stack == NULL)
-		return 1;
+		return 0;
 	if (stack->next == NULL)
 		return 1;
 	return (1 + stack_length(stack->next));
@@ -190,7 +193,8 @@ void	ft_down_sorted(t_stack **stack)
 	t_stack *last;
 	t_stack *check;
 	int flag = 0;
-
+	if (stack[0] == 0)
+		return;
 	check = stack[0];
 	while (check != NULL)
 	{
@@ -206,4 +210,19 @@ void	ft_down_sorted(t_stack **stack)
 	}
 	else
 		return;
+}
+
+int	ft_max_key(t_stack *stack)
+{
+	int key = 0;
+
+	if (stack == NULL)
+		return 0;
+	while (stack != NULL)
+	{
+		if (key < stack->flag)
+			key = stack->flag;
+		stack = stack->next;
+	}
+	return key;
 }

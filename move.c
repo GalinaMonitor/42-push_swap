@@ -2,6 +2,7 @@
 
 void	move_sa_sb_ss(t_stack	**stack)
 {
+	printf("commando_sa\n");
 	t_stack *addr = stack[0]->next->next;
 	t_stack *addr1 = stack[0]->next;
 	stack[0]->next->next = *stack;
@@ -11,6 +12,7 @@ void	move_sa_sb_ss(t_stack	**stack)
 
 void	move_pa(t_stack	**stack_a, t_stack	**stack_b)
 {
+	printf("commando_pa\n");
 	t_stack *addr = stack_b[0]->next;
 	stack_b[0]->next = stack_a[0];
 	stack_a[0] = stack_b[0];
@@ -19,6 +21,7 @@ void	move_pa(t_stack	**stack_a, t_stack	**stack_b)
 
 void	move_pb(t_stack	**stack_b, t_stack	**stack_a)
 {
+	printf("commando_pb\n");
 	t_stack *addr = stack_b[0]->next;
 	stack_b[0]->next = stack_a[0];
 	stack_a[0] = stack_b[0];
@@ -27,6 +30,7 @@ void	move_pb(t_stack	**stack_b, t_stack	**stack_a)
 
 void	move_rra_rrb_rrr(t_stack	**stack)
 {
+	printf("commando_rr\n");
 	if (stack[0] == NULL)
 		return;
 	t_stack *temp = stack[0];
@@ -41,6 +45,7 @@ void	move_rra_rrb_rrr(t_stack	**stack)
 
 void	move_ra_rb_rr(t_stack	**stack)
 {
+	printf("commando_r\n");
 	if (stack[0] == NULL)
 		return;
 	t_stack *temp = stack[0];
