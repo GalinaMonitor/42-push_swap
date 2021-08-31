@@ -158,7 +158,7 @@ int	stack_length(t_stack *stack)
 	return (1 + stack_length(stack->next));
 }
 
-int	ft_max_ind(t_stack *stack, int key)
+int	ft_max_ind(t_stack *stack)
 {
 	int max_ind = 0;
 
@@ -166,7 +166,7 @@ int	ft_max_ind(t_stack *stack, int key)
 		return 0;
 	while (stack != NULL)
 	{
-		if (max_ind < stack->order && stack->flag == key)
+		if (max_ind < stack->order)
 			max_ind = stack->order;
 		stack = stack->next;
 	}
@@ -205,7 +205,7 @@ void	ft_down_sorted(t_stack **stack)
 	last = ft_stacklast(stack[0]);
 	if (last->flag != -1 && flag == 1)
 	{
-		move_rra_rrb_rrr(stack);
+		move_rra(stack);
 		ft_down_sorted(stack);
 	}
 	else

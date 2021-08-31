@@ -34,104 +34,36 @@ void quick_sort(int arr[], int left, int right)
 	quick_sort(arr, j + 1, right);
 }
 
-
-
-
-
-
-
-
 void	ft_sort(t_stack **stack_a, int count)
 {
 	t_stack **stack_b;
-
-	int temp_middle = 0;
-	int temp_count = 0;
-	int middle = 0;
+	int length = 0;
+	int radix = 0;
 	int key = 0;
-	int count_key = 0;
 
-	// printf("\n count arg = %d\n", count);
 	stack_b = malloc(sizeof(t_stack *));
 	*stack_b = NULL;
-	key = ft_max_key(stack_a[0]);
 	if (stack_length(stack_a[0]) <= 5)
 	{
-		sort_five_and_less(stack_a, stack_b, key);
+		sort_five_and_less(stack_a, stack_b);
 		return;
 	}
-	while(if_sort_stack(stack_a[0]) != 1)
+	while(if_sort_stack(stack_a[0]) == 0)
 	{
-		key = ft_max_key(stack_a[0]);
-		middle = (ft_max_ind(stack_a[0], key) + ft_min_ind(stack_a[0], key))/2;
-		temp_middle = (ft_max_ind(stack_a[0], key) - ft_min_ind(stack_a[0], key))/2 + 1;
-		if (temp_middle < 5)
+		length = stack_length(stack_a[0]);
+		while(length--)
 		{
-			temp_middle = (ft_max_ind(stack_a[0], key) - ft_min_ind(stack_a[0], key)) + 1;
-			middle = ft_max_ind(stack_a[0], key);
-		}
-
-		temp_count = stack_length(stack_a[0]);
-		// printf("\nMIDDLE = %d\n", middle);
-		// printf("\nTEMPMIDDLE = %d\n", temp_middle);
-		// printf("\nKEY = %d\n", key);
-		while (temp_middle && temp_count && if_sort_stack(stack_a[0]) == 0)
-		{
-			if (stack_a[0]->order <= middle && stack_a[0]->flag == key)
-			{
+			if (!(stack_a[0]->order >> radix & 1))
 				move_pb(stack_a, stack_b);
-				temp_middle--;
-			}
+			if (!(stack_a[0]->order >> (radix + 1) & 1))
+				move_pb(stack_a, stack_b);
 			else
-			{
-				move_ra_rb_rr(stack_a);
-				temp_count--;
-			}
+				move_ra(stack_a);
 		}
-		key = ft_max_key(stack_b[0]);
-		count_key = 1;
-		ft_down_sorted(stack_a);
-		while(stack_length(stack_b[0]) > 5)
-		{
-			middle = (ft_max_ind(stack_b[0], key) + ft_min_ind(stack_b[0], key))/2;
-			temp_middle = (ft_max_ind(stack_b[0], key) - ft_min_ind(stack_b[0], key))/2 + 1;
-			temp_count = stack_length(stack_b[0]);
-			printf("\nMIDDLE = %d\n", middle);
-			printf("\nTEMPMIDDLE = %d\n", temp_middle);
-			printf("\nKEY = %d\n", key);
-			while (temp_middle > 0 && temp_count > 0)
-			{
-				if (stack_b[0]->order > middle)
-				{
-					stack_b[0]->flag+= key;
-					move_pa(stack_a, stack_b);
-					temp_middle--;
-				}
-				else
-				{
-					move_ra_rb_rr(stack_b);
-					temp_count--;
-				}
-			}
-			count_key++;
-		}
-		key = ft_max_key(stack_b[0]);
-		sort_five_and_less(stack_b, stack_a, key);
-		while(stack_b[0])
-		{
-			stack_b[0]->flag = -1;
+		while(stack_b[0] != NULL)
 			move_pa(stack_a, stack_b);
-			move_ra_rb_rr(stack_a);
-		}
-		printf("\n\nStack A");
-		ft_stackprint(*stack_a);
-		printf("\n\nStack B");
-		ft_stackprint(*stack_b);
+		radix+=2;
 	}
-	// printf("\n\nStack A");
-	// ft_stackprint(*stack_a);
-	// printf("\n\nStack B");
-	// ft_stackprint(*stack_b);
 }
 
 int main(int argc, char **argv)
@@ -148,8 +80,6 @@ int main(int argc, char **argv)
 	}
 	quick_sort(sorted, 0, argc - 2);
 	t_stack **stack = ft_fillstack(sorted, not_sorted, argc - 1);
-	// printf("\nFirst\n");
-	// ft_stackprint(*stack);
 	ft_sort(stack, argc - 1);
 	return 0;
 }
