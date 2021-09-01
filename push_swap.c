@@ -40,10 +40,6 @@ void	ft_sort(t_stack **stack_a, int count)
 	int length = 0;
 	int radix = 0;
 	int key = 0;
-	int ind1 = 0;
-	int ind2 = 0;
-	int ind3 = 0;
-	int ind4 = 0;
 
 	stack_b = malloc(sizeof(t_stack *));
 	*stack_b = NULL;
@@ -52,31 +48,10 @@ void	ft_sort(t_stack **stack_a, int count)
 		sort_five_and_less(stack_a, stack_b);
 		return;
 	}
-	int bbb = 5;
-	while(bbb--)
-	// while(if_sort_stack(stack_a[0]) == 0)
+	while(if_sort_stack(stack_a[0]) == 0)
 	{
 		length = stack_length(stack_a[0]);
-		while (stack_a[0] && stack_a[0]->flag == 1 && length--)
-		{
-			if (!(stack_a[0]->order >> radix & 1))
-			{
-				stack_a[0]->flag = 0;
-				move_pb(stack_a, stack_b);
-				move_rb(stack_b);
-				ind2++;
-			}
-			else
-				move_ra(stack_a);
-		}
-		length = stack_length(stack_b[0]);
-		while(ind2-- > 0)
-		{
-			move_rb(stack_b);
-		}
-		ind2 = 0;
-		length = stack_length(stack_a[0]) ;
-		while(length-- && stack_a[0]->flag != 1)
+		while(length--)
 		{
 			if (if_sort_stack(stack_a[0]) == 1 && if_sort_stack_reversed(stack_b[0]) == 1)
 				break;
@@ -85,20 +60,12 @@ void	ft_sort(t_stack **stack_a, int count)
 			else
 				move_ra(stack_a);
 		}
-
-
-
-		printf("\n\n\n______A>_____\n");
-		printf("radix = %d", radix);
-		ft_stackprint(stack_a[0]);
-		printf("\n______B_____\n");
-		ft_stackprint(stack_b[0]);
-
-
-
+		// printf("\n___________\n");
+		// ft_stackprint(stack_a[0]);
+		// printf("\n___________\n");
+		// ft_stackprint(stack_b[0]);
 		radix+=1;
 		length = stack_length(stack_b[0]);
-		ind1 = 0;
 		while(length--)
 		{
 			if (if_sort_stack(stack_a[0]) == 1 && if_sort_stack_reversed(stack_b[0]) == 1)
@@ -107,23 +74,14 @@ void	ft_sort(t_stack **stack_a, int count)
 				move_rb(stack_b);
 			else
 			{
-				stack_b[0]->flag += 1;
 				move_pa(stack_a, stack_b);
-				move_ra(stack_a);
-				ind1+=1;
+				// move_ra(stack_a);
 			}
 		}
-
-
-
-		printf("\n\n\n______A_____\n");
-		printf("radix = %d", radix);
-		ft_stackprint(stack_a[0]);
-		printf("\n______<B_____\n");
-		ft_stackprint(stack_b[0]);
-
-
-
+		// printf("\n___________\n");
+		// ft_stackprint(stack_a[0]);
+		// printf("\n___________\n");
+		// ft_stackprint(stack_b[0]);
 	}
 	if (stack_length(stack_b[0]) > 0)
 	{
