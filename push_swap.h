@@ -25,7 +25,7 @@ void		move_ra(t_stack	**stack);
 void		move_rb(t_stack	**stack);
 void		move_pb(t_stack	**stack_b, t_stack	**stack_a);
 int			if_sort_stack(t_stack *stack);
-int			if_sort_stack_reverse(t_stack *stack);
+int			if_sort_stack_reversed(t_stack *stack);
 int			stack_length(t_stack *stack);
 int			ft_max_ind(t_stack *stack);
 int			ft_min_ind(t_stack *stack, int key);

@@ -18,6 +18,8 @@ int	if_sort_stack(t_stack *stack)
 	int biggest;
 	int order;
 
+	if (stack == NULL)
+		return 0;
 	biggest = stack->nbr;
 	order = stack->order;
 	if (stack->next == NULL)
@@ -29,6 +31,32 @@ int	if_sort_stack(t_stack *stack)
 		{
 			biggest = stack->nbr;
 			order+=1;
+		}
+		else
+			return 0;
+		// printf("%d", stack->order);
+	}
+	return 1;
+}
+
+int	if_sort_stack_reversed(t_stack *stack)
+{
+	int smallest;
+	int order;
+
+	if (stack == NULL)
+		return 0;
+	smallest = stack->nbr;
+	order = stack->order;
+	if (stack->next == NULL)
+		return 0;
+	while(stack->next != NULL)
+	{
+		stack = stack->next;
+		if (stack->nbr < smallest && stack->order == order - 1)
+		{
+			smallest = stack->nbr;
+			order-=1;
 		}
 		else
 			return 0;

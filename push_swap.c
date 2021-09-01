@@ -53,17 +53,45 @@ void	ft_sort(t_stack **stack_a, int count)
 		length = stack_length(stack_a[0]);
 		while(length--)
 		{
+			if (if_sort_stack(stack_a[0]) == 1 && if_sort_stack_reversed(stack_b[0]) == 1)
+				break;
 			if (!(stack_a[0]->order >> radix & 1))
-				move_pb(stack_a, stack_b);
-			if (!(stack_a[0]->order >> (radix + 1) & 1))
 				move_pb(stack_a, stack_b);
 			else
 				move_ra(stack_a);
 		}
-		while(stack_b[0] != NULL)
-			move_pa(stack_a, stack_b);
-		radix+=2;
+		// printf("\n___________\n");
+		// ft_stackprint(stack_a[0]);
+		// printf("\n___________\n");
+		// ft_stackprint(stack_b[0]);
+		radix+=1;
+		length = stack_length(stack_b[0]);
+		while(length--)
+		{
+			if (if_sort_stack(stack_a[0]) == 1 && if_sort_stack_reversed(stack_b[0]) == 1)
+				break;
+			if (!(stack_b[0]->order >> radix & 1))
+				move_rb(stack_b);
+			else
+			{
+				move_pa(stack_a, stack_b);
+				// move_ra(stack_a);
+			}
+		}
+		// printf("\n___________\n");
+		// ft_stackprint(stack_a[0]);
+		// printf("\n___________\n");
+		// ft_stackprint(stack_b[0]);
 	}
+	if (stack_length(stack_b[0]) > 0)
+	{
+		while (stack_b[0])
+			move_pa(stack_a, stack_b);
+	}
+	// printf("\n___________\n");
+	// ft_stackprint(stack_a[0]);
+	// printf("\n___________\n");
+	// ft_stackprint(stack_b[0]);
 }
 
 int main(int argc, char **argv)
