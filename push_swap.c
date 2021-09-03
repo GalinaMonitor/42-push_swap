@@ -43,56 +43,38 @@ void	ft_sort(t_stack **stack_a, int count)
 
 	stack_b = malloc(sizeof(t_stack *));
 	*stack_b = NULL;
-	if (stack_length(stack_a[0]) <= 5)
+	if (stack_length(stack_a[0]) <= 5 && if_sort_stack(stack_a[0]) == 0)
 	{
 		sort_five_and_less(stack_a, stack_b);
 		return;
 	}
 	while(if_sort_stack(stack_a[0]) == 0)
 	{
-		length = stack_length(stack_a[0]);
-		while(length--)
-		{
-			if (if_sort_stack(stack_a[0]) == 1 && if_sort_stack_reversed(stack_b[0]) == 1)
-				break;
-			if (!(stack_a[0]->order >> radix & 1))
-				move_pb(stack_a, stack_b);
-			else
-				move_ra(stack_a);
-		}
+		find_zero_in_a(stack_b, stack_a, radix);
 		radix+=1;
-		length = stack_length(stack_b[0]);
-		while(length--)
-		{
-			if (if_sort_stack(stack_a[0]) == 1 && if_sort_stack_reversed(stack_b[0]) == 1)
-				break;
-			if (!(stack_b[0]->order >> radix & 1))
-				move_rb(stack_b);
-			else
-				move_pa(stack_a, stack_b);
-		}
+		find_one_in_b(stack_b, stack_a, radix);
 	}
 	if (stack_length(stack_b[0]) > 0)
-	{
 		while (stack_b[0])
 			move_pa(stack_a, stack_b);
-	}
 }
 
 int main(int argc, char **argv)
 {
-	int ind;
-	int not_sorted[argc - 1];
-	int sorted[argc - 1];
-	ind = 0;
-	while (ind < argc - 1)
-	{
-		not_sorted[ind] = ft_atoi(argv[ind + 1]);
-		sorted[ind] = ft_atoi(argv[ind + 1]);
-		ind++;
-	}
+	int *not_sorted;
+	int *sorted;
+	t_stack **stack;
+
+	not_sorted = ft_check_and_parse(argc, argv);
+	if (not_sorted == NULL)
+		return 1;
+	sorted = ft_check_and_parse(argc, argv);
 	quick_sort(sorted, 0, argc - 2);
-	t_stack **stack = ft_fillstack(sorted, not_sorted, argc - 1);
+	stack = ft_fillstack(sorted, not_sorted, argc - 1);
 	ft_sort(stack, argc - 1);
+	ft_stackclear(*stack);
+	free(stack);
+	free(not_sorted);
+	free(sorted);
 	return 0;
 }

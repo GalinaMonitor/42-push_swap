@@ -33,13 +33,3 @@ void quick_sort(int arr[], int left, int right)
 	quick_sort(arr, left, j - 1);
 	quick_sort(arr, j + 1, right);
 }
-
-// int main()
-// {
-// 	int arr[10] = {5, 6, 7, 3, 1, 2, 9, 4, 8, 0};
-// 	int i;
-
-// 	quick_sort(arr, 0, 10);
-// 	for (i = 0; i < 10; i++)
-// 		printf("%d", arr[i]);
-// }

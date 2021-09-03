@@ -1,124 +1,112 @@
 #include "push_swap.h"
 
-void	sort_five_and_less(t_stack **stack_a, t_stack **stack_b)
+void	sort_five_and_less(t_stack **st_a, t_stack **st_b)
 {
-	int ind;
+	int	ind;
 
 	ind = 0;
-	if (stack_a[0] == NULL)
-		return;
-	if (stack_a[0]->next == NULL)
-		return;
-	if (stack_length(stack_a[0]) == 2)
+	if (st_a[0] == NULL)
+		return ;
+	if (st_a[0]->next == NULL)
+		return ;
+	if (stack_length(st_a[0]) == 2)
 	{
-		if (stack_a[0]->nbr > stack_a[0]->next->nbr)
-			move_sa(stack_a);
-		return;
+		if (st_a[0]->nbr > st_a[0]->next->nbr)
+			move_sa(st_a);
+		return ;
 	}
-	if (stack_length(stack_a[0]) == 3)
-		sort_three(stack_a);
-	if (stack_length(stack_a[0]) == 4)
-		sort_four(stack_a, stack_b);
-	if (stack_length(stack_a[0]) == 5)
-		sort_five(stack_a, stack_b);
+	if (stack_length(st_a[0]) == 3)
+		sort_three(st_a);
+	if (stack_length(st_a[0]) == 4)
+		sort_four(st_a, st_b);
+	if (stack_length(st_a[0]) == 5)
+		sort_five(st_a, st_b);
 }
 
-void	sort_four(t_stack **stack_a, t_stack **stack_b)
+void	sort_four(t_stack **st_a, t_stack **st_b)
 {
-		int ind = ft_max_ind(stack_a[0]);
-		if (stack_a[0]->order == ind)
-		{
-			move_pb(stack_a, stack_b);
-			sort_three(stack_a);
-			move_pa(stack_a, stack_b);
-			move_ra(stack_a);
-			return;
-		}
-		else if (ft_stacklast(stack_a[0])->order == ind)
-		{
-			move_rra(stack_a);
-			move_pb(stack_a, stack_b);
-			sort_three(stack_a);
-			move_pa(stack_a, stack_b);
-			move_ra(stack_a);
-			return;
-		}
-		else
-		{
-			move_ra(stack_a);
-			sort_four(stack_a, stack_b);
-		}
-}
+	int	ind;
 
-void	sort_five(t_stack **stack_a, t_stack **stack_b)
-{
-	int ind1 = ft_max_ind(stack_a[0]);
-	int ind2 = ind1 - 1;
-	while (stack_length(stack_b[0]) != 2)
+	ind = ft_max_ind(st_a[0]);
+	if (st_a[0]->order == ind)
 	{
-		if (ft_stacklast(stack_a[0])->order == ind1 || ft_stacklast(stack_a[0])->order == ind2 || stack_a[0]->order == ind1 || stack_a[0]->order == ind2)
-		{
-			if (stack_a[0]->order == ind1 || stack_a[0]->order == ind2)
-				move_pb(stack_a, stack_b);
-			if (ft_stacklast(stack_a[0])->order == ind1 || ft_stacklast(stack_a[0])->order == ind2)
-			{
-				move_rra(stack_a);
-				move_pb(stack_a, stack_b);
-			}
-		}
-		else
-			move_ra(stack_a);
+		move_pb(st_a, st_b);
+		sort_three(st_a);
+		move_pa(st_a, st_b);
+		move_ra(st_a);
+		return ;
 	}
-	sort_three(stack_a);
-	if (stack_b[0]->order == (ft_max_ind(stack_a[0]) + 1))
+	else if (ft_stacklast(st_a[0])->order == ind)
 	{
-		move_pa(stack_a, stack_b);
-		move_ra(stack_a);
-		move_pa(stack_a, stack_b);
-		move_ra(stack_a);
+		move_rra(st_a);
+		move_pb(st_a, st_b);
+		sort_three(st_a);
+		move_pa(st_a, st_b);
+		move_ra(st_a);
+		return ;
 	}
 	else
 	{
-		move_pa(stack_a, stack_b);
-		move_pa(stack_a, stack_b);
-		move_ra(stack_a);
-		move_ra(stack_a);
+		move_ra(st_a);
+		sort_four(st_a, st_b);
 	}
 }
 
-
-
-void	sort_three(t_stack **stack)
+void	sort_five(t_stack **st_a, t_stack **st_b)
 {
-	if (stack[0]->nbr > stack[0]->next->nbr)
+	int	i1;
+	int	i2 ;
+
+	i1 = 5;
+	i2 = 4;
+	while (stack_length(st_b[0]) != 2)
 	{
-		if (stack[0]->nbr > stack[0]->next->next->nbr)
+		if (ft_stacklast(st_a[0])->order == i1 || \
+			ft_stacklast(st_a[0])->order == i2 || \
+			st_a[0]->order == i1 || \
+			st_a[0]->order == i2)
 		{
-			if (stack[0]->next->nbr > stack[0]->next->next->nbr)
+			if (st_a[0]->order == i1 || st_a[0]->order == i2)
+				move_pb(st_a, st_b);
+			if (ft_stacklast(st_a[0])->order == i1 || \
+				ft_stacklast(st_a[0])->order == i2)
 			{
-				move_sa(stack);
-				move_rra(stack);
+				move_rra(st_a);
+				move_pb(st_a, st_b);
 			}
-			else
-				move_ra(stack);
 		}
-		else if (stack[0]->nbr < stack[0]->next->next->nbr)
-			move_sa(stack);
+		else
+			move_ra(st_a);
 	}
-	else if (stack[0]->nbr < stack[0]->next->nbr)
+	sort_three(st_a);
+	get_back_from_b(st_a, st_b);
+}
+
+void	sort_three(t_stack **s)
+{
+	if (s[0]->nbr > s[0]->next->nbr && s[0]->nbr > s[0]->next->next->nbr)
 	{
-		if (stack[0]->nbr > stack[0]->next->next->nbr)
-			move_rra(stack);
-		else if (stack[0]->nbr < stack[0]->next->next->nbr)
+		if (s[0]->next->nbr > s[0]->next->next->nbr)
 		{
-			if (stack[0]->next->nbr > stack[0]->next->next->nbr)
+			move_sa(s);
+			move_rra(s);
+		}
+		else
+			move_ra(s);
+	}
+	else if (s[0]->nbr > s[0]->next->nbr && s[0]->nbr < s[0]->next->next->nbr)
+		move_sa(s);
+	else if (s[0]->nbr < s[0]->next->nbr)
+	{
+		if (s[0]->nbr > s[0]->next->next->nbr)
+			move_rra(s);
+		else if (s[0]->nbr < s[0]->next->next->nbr)
+		{
+			if (s[0]->next->nbr > s[0]->next->next->nbr)
 			{
-				move_sa(stack);
-				move_ra(stack);
+				move_sa(s);
+				move_ra(s);
 			}
-			else
-				return;
 		}
 	}
 }
-
