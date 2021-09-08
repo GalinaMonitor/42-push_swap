@@ -1,53 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   service.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/06 11:30:58 by gmonitor          #+#    #+#             */
+/*   Updated: 2021/09/08 15:58:06 by gmonitor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_str_digit(char *str)
 {
-	if(*str == '+' || *str == '-')
+	if (*str == '+' || *str == '-')
 		str++;
-	while(ft_isdigit(*str) && *str)
+	while (ft_isdigit(*str) && *str)
 		str++;
-	if(*str)
-		return 0;
+	if (*str)
+		return (0);
 	else
-		return 1;
+		return (1);
 }
 
-void	find_zero_in_a(t_stack **stack_b, t_stack **stack_a, int radix)
+void	find_zero_in_a(t_stack **st_b, t_stack **st_a, int radix)
 {
-	int length;
+	int	length;
 
-	length = stack_length(stack_a[0]);
-	while(length--)
+	length = stack_length(st_a[0]);
+	while (length--)
 	{
-		if (if_sort_stack(stack_a[0]) == 1 && if_sort_stack_reversed(stack_b[0]) == 1)
-			return;
-		if (!(stack_a[0]->order >> radix & 1))
-			move_pb(stack_a, stack_b);
+		if (if_sort_stack(st_a[0]) == 1 && if_sort_stack_reversed(st_b[0]) == 1)
+			return ;
+		if (!(st_a[0]->order >> radix & 1))
+			move_pb(st_a, st_b);
 		else
-			move_ra(stack_a);
+			move_ra(st_a);
 	}
 }
 
-void	find_one_in_b(t_stack **stack_b, t_stack **stack_a, int radix)
+void	find_one_in_b(t_stack **st_b, t_stack **st_a, int radix)
 {
-	int length;
+	int	length;
 
-	length = stack_length(stack_b[0]);
-	while(length--)
+	length = stack_length(st_b[0]);
+	while (length--)
 	{
-		if (if_sort_stack(stack_a[0]) == 1 && if_sort_stack_reversed(stack_b[0]) == 1)
-			return;
-		if (!(stack_b[0]->order >> radix & 1))
-			move_rb(stack_b);
+		if (if_sort_stack(st_a[0]) == 1 && if_sort_stack_reversed(st_b[0]) == 1)
+			return ;
+		if (!(st_b[0]->order >> radix & 1))
+			move_rb(st_b);
 		else
-			move_pa(stack_a, stack_b);
+			move_pa(st_a, st_b);
 	}
 }
 
-int	*ft_check_and_parse(int argc, char **argv)
+int	*check_and_parse(int argc, char **argv)
 {
-	int ind;
-	int *not_sorted;
+	int			ind;
+	int			*not_sorted;
+	long long	temp;
 
 	not_sorted = malloc(sizeof(int) * (argc - 1));
 	ind = 0;
@@ -55,18 +68,19 @@ int	*ft_check_and_parse(int argc, char **argv)
 	{
 		if (is_str_digit(argv[ind + 1]))
 		{
-			not_sorted[ind] = ft_atoi(argv[ind + 1]);
-			if (not_sorted[ind] < 0)
+			temp = ft_atoi(argv[ind + 1]);
+			if (temp < -2147483648 || temp > 2147483647)
 			{
 				write(1, "Error", 5);
-				return NULL;
+				return (NULL);
 			}
+			not_sorted[ind] = (int)temp;
 			ind++;
 		}
 		else
 		{
 			write(1, "Error", 5);
-			return NULL;
+			return (NULL);
 		}
 	}
 	return (not_sorted);

@@ -6,13 +6,13 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 17:02:07 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/09/03 17:02:10 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/09/08 15:55:39 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_stackadd_back(t_stack **stack, t_stack *new)
+void	stackadd_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
 
@@ -21,7 +21,7 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 		*stack = new;
 		return ;
 	}
-	last = ft_stacklast(*stack);
+	last = stacklast(*stack);
 	last->next = new;
 }
 
@@ -75,10 +75,10 @@ int	if_sort_stack_reversed(t_stack *stack)
 	return (1);
 }
 
-t_stack	*ft_stacklast(t_stack *stack)
+t_stack	*stacklast(t_stack *stack)
 {
 	if (stack != NULL)
 		if (stack->next)
-			return (ft_stacklast(stack->next));
+			return (stacklast(stack->next));
 	return (stack);
 }

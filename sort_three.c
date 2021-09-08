@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/06 11:31:02 by gmonitor          #+#    #+#             */
+/*   Updated: 2021/09/08 15:55:49 by gmonitor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_five_and_less(t_stack **st_a, t_stack **st_b)
@@ -25,10 +37,7 @@ void	sort_five_and_less(t_stack **st_a, t_stack **st_b)
 
 void	sort_four(t_stack **st_a, t_stack **st_b)
 {
-	int	ind;
-
-	ind = ft_max_ind(st_a[0]);
-	if (st_a[0]->order == ind)
+	if (st_a[0]->order == 4)
 	{
 		move_pb(st_a, st_b);
 		sort_three(st_a);
@@ -36,7 +45,7 @@ void	sort_four(t_stack **st_a, t_stack **st_b)
 		move_ra(st_a);
 		return ;
 	}
-	else if (ft_stacklast(st_a[0])->order == ind)
+	else if (stacklast(st_a[0])->order == 4)
 	{
 		move_rra(st_a);
 		move_pb(st_a, st_b);
@@ -54,22 +63,17 @@ void	sort_four(t_stack **st_a, t_stack **st_b)
 
 void	sort_five(t_stack **st_a, t_stack **st_b)
 {
-	int	i1;
-	int	i2 ;
-
-	i1 = 5;
-	i2 = 4;
 	while (stack_length(st_b[0]) != 2)
 	{
-		if (ft_stacklast(st_a[0])->order == i1 || \
-			ft_stacklast(st_a[0])->order == i2 || \
-			st_a[0]->order == i1 || \
-			st_a[0]->order == i2)
+		if (stacklast(st_a[0])->order == 5 || \
+			stacklast(st_a[0])->order == 4 || \
+			st_a[0]->order == 5 || \
+			st_a[0]->order == 4)
 		{
-			if (st_a[0]->order == i1 || st_a[0]->order == i2)
+			if (st_a[0]->order == 5 || st_a[0]->order == 4)
 				move_pb(st_a, st_b);
-			if (ft_stacklast(st_a[0])->order == i1 || \
-				ft_stacklast(st_a[0])->order == i2)
+			if (stacklast(st_a[0])->order == 5 || \
+				stacklast(st_a[0])->order == 4)
 			{
 				move_rra(st_a);
 				move_pb(st_a, st_b);

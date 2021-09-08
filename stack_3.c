@@ -6,13 +6,13 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 17:02:17 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/09/03 17:28:53 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/09/08 15:55:12 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_min_ind(t_stack *stack, int key)
+int	min_ind(t_stack *stack, int key)
 {
 	int	max_ind;
 
@@ -28,7 +28,7 @@ int	ft_min_ind(t_stack *stack, int key)
 	return (max_ind);
 }
 
-void	ft_down_sorted(t_stack **stack)
+void	down_sorted(t_stack **stack)
 {
 	t_stack	*last;
 	t_stack	*check;
@@ -44,17 +44,17 @@ void	ft_down_sorted(t_stack **stack)
 			flag = 1;
 		check = check->next;
 	}
-	last = ft_stacklast(stack[0]);
+	last = stacklast(stack[0]);
 	if (last->flag != -1 && flag == 1)
 	{
 		move_rra(stack);
-		ft_down_sorted(stack);
+		down_sorted(stack);
 	}
 	else
 		return ;
 }
 
-int	ft_max_key(t_stack *stack)
+int	max_key(t_stack *stack)
 {
 	int	key;
 
@@ -70,11 +70,11 @@ int	ft_max_key(t_stack *stack)
 	return (key);
 }
 
-void	ft_stackclear(t_stack *stack)
+void	stackclear(t_stack *stack)
 {
 	if (stack != NULL)
 	{
-		ft_stackclear(stack->next);
+		stackclear(stack->next);
 		free(stack);
 		stack = NULL;
 	}
@@ -82,7 +82,7 @@ void	ft_stackclear(t_stack *stack)
 
 void	get_back_from_b(t_stack **st_a, t_stack **st_b)
 {
-	if (st_b[0]->order == (ft_max_ind(st_a[0]) + 1))
+	if (st_b[0]->order == (max_ind(st_a[0]) + 1))
 	{
 		move_pa(st_a, st_b);
 		move_ra(st_a);
@@ -97,5 +97,3 @@ void	get_back_from_b(t_stack **st_a, t_stack **st_b)
 		move_ra(st_a);
 	}
 }
-
-

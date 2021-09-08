@@ -6,29 +6,29 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 17:02:14 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/09/03 17:34:21 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/09/08 15:55:27 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	**ft_fillstack(int *sort, int *nsort, int size)
+t_stack	**fillstack(int *srt, int *nsrt, int size)
 {
-	t_stack	**stack;
+	t_stack	**st;
 	int		i;
 
 	i = 0;
-	stack = malloc(sizeof(t_stack *));
-	*stack = NULL;
+	st = malloc(sizeof(t_stack *));
+	*st = NULL;
 	while (size-- > 0)
 	{
-		ft_stackadd_back(stack, ft_stacknew(sort[i], find_ind(sort, nsort[i])));
+		stackadd_back(st, stacknew(nsrt[i], find_ind(srt, nsrt[i]) + 1));
 		i++;
 	}
-	return (stack);
+	return (st);
 }
 
-t_stack	*ft_stacknew(int nbr, int order)
+t_stack	*stacknew(int nbr, int order)
 {
 	t_stack	*stack;
 
@@ -51,7 +51,7 @@ int	stack_length(t_stack *stack)
 	return (1 + stack_length(stack->next));
 }
 
-int	ft_max_ind(t_stack *stack)
+int	max_ind(t_stack *stack)
 {
 	int	max_ind;
 
