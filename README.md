@@ -28,7 +28,7 @@ Program sorts stacks `a` and `b` with the following operations:
 > `rrb` : reverse rotate b - shift down all elements of stack b by 1. The last element becomes the first one.
 >
 > `rrr` : rra and rrb at the same time.
-> 
+>
 ## Example:
 #
 	----------------------------
@@ -95,7 +95,7 @@ Program prints operations for sorting an array.
 The main difficulty of task is to create your own effective algorythm.
 For array size 5 and less i used manual search.
 
-For bigger arrays i used [`radix sort`](https://www.interviewcake.com/concept/java/radix-sort):
+For bigger arrays I used upgraded version of [`radix sort`](https://www.interviewcake.com/concept/java/radix-sort): the main trick is to divide the numbers in two parts bit by bit.
 
 _                 | Complexity |
 ------------------|:----------:|
