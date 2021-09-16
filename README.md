@@ -29,7 +29,7 @@ Program sorts stacks `a` and `b` with the following operations:
 >
 > `rrr` : rra and rrb at the same time.
 > 
-# Example:
+## Example:
 #
 	----------------------------
 	Init a and b:
