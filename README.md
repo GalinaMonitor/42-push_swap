@@ -99,9 +99,9 @@ For bigger arrays I used upgraded version of [`radix sort`](https://www.intervie
 
 _                 | Complexity |
 ------------------|:----------:|
-Worst case time   | O(log n)       |
-Best case time    | O(log n)       |
-Average case time | O(log n)       |
+Worst case time   | O(nlog n)       |
+Best case time    | O(nlog n)       |
+Average case time | O(nlog n)       |
 
 #
 ## Usage:
