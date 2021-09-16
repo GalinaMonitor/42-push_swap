@@ -1,7 +1,9 @@
-# Push_swap
 
+# Push_swap
 ## Sort an array of numbers using two stacks and deque rules
 The Push_swap project is a very simple and highly effective algorithm project. You have at your disposal a set of int values, 2 stacks and a set of instructions to manipulate both stacks.
+
+[push_swap_subject.pdf](https://github.com/GalinaMonitor/42-push_swap/files/7177846/push_swap_subject.pdf)
 
 Program sorts stacks `a` and `b` with the following operations:
 
