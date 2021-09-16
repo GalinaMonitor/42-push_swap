@@ -1,7 +1,9 @@
 # Push_swap
 
 ## Sort an array of numbers using two stacks and deque rules
-Program gets string of numbers and sort them using stacks `a` and `b` the following operations:
+The Push_swap project is a very simple and highly effective algorithm project. You have at your disposal a set of int values, 2 stacks and a set of instructions to manipulate both stacks.
+
+Program sorts stacks `a` and `b` with the following operations:
 
 > `sa` : swap a - swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements).
 >
