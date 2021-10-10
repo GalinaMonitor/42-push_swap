@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   service.c                                          :+:      :+:    :+:   */
+/*   service_1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/06 11:30:58 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/09/08 15:58:06 by gmonitor         ###   ########.fr       */
+/*   Created: 2021/10/04 15:00:36 by gmonitor          #+#    #+#             */
+/*   Updated: 2021/10/04 15:00:37 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,14 @@ int	*check_and_parse(int argc, char **argv)
 			if (temp < -2147483648 || temp > 2147483647)
 			{
 				write(1, "Error", 5);
-				return (NULL);
+				exit(1);
 			}
-			not_sorted[ind] = (int)temp;
-			ind++;
+			not_sorted[ind++] = (int)temp;
 		}
 		else
 		{
 			write(1, "Error", 5);
-			return (NULL);
+			exit(1);
 		}
 	}
 	return (not_sorted);

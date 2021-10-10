@@ -9,6 +9,7 @@ STR_1000=`ruby -e "puts (1..1000).to_a.shuffle.join(' ')"`
 WRONG_INPUT1="2147483648"
 WRONG_INPUT2="-2147483649"
 WRONG_INPUT3="kek"
+WRONG_INPUT4="3 3 3"
 
 echo "Test using checker"
 
@@ -45,6 +46,9 @@ echo -e "\nArg = $WRONG_INPUT2"
 
 echo -e "\nArg = $WRONG_INPUT3"
 ./push_swap $WRONG_INPUT3
+
+echo -e "\nArg = $WRONG_INPUT4"
+./push_swap $WRONG_INPUT4
 
 echo -e "\n\nZero args"
 ./push_swap

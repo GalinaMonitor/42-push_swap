@@ -3,12 +3,12 @@ CC = gcc
 
 # FLAGS = -Wall -Werror -Wextra
 
-DIR_LIBFT = libft/libft/
-LIBFT = libft/libft/libft.a
+DIR_LIBFT = libft/
+LIBFT = libft/libft.a
 
 HEADER = push_swap.h
 
-PUSH_SWAP_SRC = push_swap.c stack_1.c stack_2.c stack_3.c move_1.c move_2.c sort_three.c service.c
+PUSH_SWAP_SRC = push_swap.c stack_1.c stack_2.c stack_3.c move_1.c move_2.c sort_three.c service_1.c service_2.c quick_sort.c
 
 SOURCES_LIBFT = $(addprefix $(DIR_LIBFT), $(LIBFT))
 

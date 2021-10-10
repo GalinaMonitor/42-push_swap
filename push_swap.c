@@ -6,47 +6,11 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:30:44 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/09/08 15:56:11 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/10 14:50:49 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	quick_sort(int arr[], int left, int right)
-{
-	int	pivot;
-	int	i;
-	int	j;
-	int	temp;
-
-	if (left >= right)
-		return ;
-	pivot = left;
-	i = left + 1;
-	j = right;
-	while (i <= j)
-	{
-		while (i <= right && arr[i] <= arr[pivot])
-			i++;
-		while (j > left && arr[j] >= arr[pivot])
-			j--;
-		if (i > j)
-			castling(arr, pivot, j);
-		else
-			castling(arr, i, j);
-	}
-	quick_sort(arr, left, j - 1);
-	quick_sort(arr, j + 1, right);
-}
-
-void	castling(int *arr, int i, int j)
-{
-	int	temp;
-
-	temp = arr[i];
-	arr[i] = arr[j];
-	arr[j] = temp;
-}
 
 void	sort(t_stack **stack_a, int count)
 {
@@ -83,10 +47,9 @@ int	main(int argc, char **argv)
 	t_stack	**stack;
 
 	not_sorted = check_and_parse(argc, argv);
-	if (not_sorted == NULL)
-		return (1);
 	sorted = check_and_parse(argc, argv);
 	quick_sort(sorted, 0, argc - 2);
+	check_dup(sorted);
 	stack = fillstack(sorted, not_sorted, argc - 1);
 	sort(stack, argc - 1);
 	stackclear(*stack);

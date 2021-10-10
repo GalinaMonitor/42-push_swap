@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/04 14:36:02 by gmonitor          #+#    #+#             */
+/*   Updated: 2021/10/04 15:03:41 by gmonitor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdio.h>
 # include <unistd.h>
-
-# include "libft/libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct s_stack
 {
@@ -30,6 +41,7 @@ int			is_str_digit(char *str);
 void		find_zero_in_a(t_stack **st_b, t_stack **st_a, int radix);
 void		find_one_in_b(t_stack **st_b, t_stack **st_a, int radix);
 int			*check_and_parse(int argc, char **argv);
+void		check_dup(int *sorted);
 int			find_ind(int	*arr, int	nbr);
 
 void		sort_five_and_less(t_stack **stack_a, t_stack **stack_b);
