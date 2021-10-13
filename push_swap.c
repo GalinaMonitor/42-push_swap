@@ -6,13 +6,13 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:30:44 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/10/10 14:50:49 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:43:36 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort(t_stack **stack_a, int count)
+void	sort(t_stack **stack_a)
 {
 	t_stack	**stack_b;
 	int		length;
@@ -46,15 +46,17 @@ int	main(int argc, char **argv)
 	int		*sorted;
 	t_stack	**stack;
 
+	if (argc == 1)
+		exit (NOARGS);
 	not_sorted = check_and_parse(argc, argv);
 	sorted = check_and_parse(argc, argv);
 	quick_sort(sorted, 0, argc - 2);
 	check_dup(sorted);
 	stack = fillstack(sorted, not_sorted, argc - 1);
-	sort(stack, argc - 1);
+	sort(stack);
 	stackclear(*stack);
 	free(stack);
 	free(not_sorted);
 	free(sorted);
-	return (0);
+	exit (0);
 }

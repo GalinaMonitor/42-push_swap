@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 17:02:14 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/10/04 14:46:14 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:39:49 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ t_stack	**fillstack(int *srt, int *nsrt, int size)
 {
 	t_stack	**st;
 	int		i;
+	int		temp_size;
 
+	temp_size = size;
 	i = 0;
 	st = malloc(sizeof(t_stack *));
 	*st = NULL;
-	while (size-- > 0)
+	while (temp_size-- > 0)
 	{
-		stackadd_back(st, stacknew(nsrt[i], find_ind(srt, nsrt[i]) + 1));
+		stackadd_back(st, stacknew(nsrt[i], find_ind(srt, nsrt[i], size) + 1));
 		i++;
 	}
 	return (st);

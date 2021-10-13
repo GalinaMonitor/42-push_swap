@@ -2,9 +2,9 @@
 
 STR_3=`ruby -e "puts (1..3).to_a.shuffle.join(' ')"`
 STR_5=`ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
-STR_100=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
-STR_500=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
-STR_1000=`ruby -e "puts (1..1000).to_a.shuffle.join(' ')"`
+STR_100=`ruby -e "puts (-100..100).to_a.shuffle.join(' ')"`
+STR_500=`ruby -e "puts (-500..500).to_a.shuffle.join(' ')"`
+STR_1000=`ruby -e "puts (-1000..1000).to_a.shuffle.join(' ')"`
 
 WRONG_INPUT1="2147483648"
 WRONG_INPUT2="-2147483649"

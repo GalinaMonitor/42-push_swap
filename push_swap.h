@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 14:36:02 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/10/04 15:03:41 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:44:47 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # include <stdio.h>
 # include <unistd.h>
 # include "libft/libft.h"
+# define NOARGS 1
+# define DOUBLEARGS 2
+# define NOTINT 3
+# define NOTADIGIT 4
 
 typedef struct s_stack
 {
@@ -33,7 +37,7 @@ void		move_rrb(t_stack	**stack);
 void		move_ra(t_stack	**stack);
 void		move_rb(t_stack	**stack);
 
-void		sort(t_stack **stack_a, int count);
+void		sort(t_stack **stack_a);
 void		castling(int *arr, int i, int j);
 void		quick_sort(int arr[], int left, int right);
 
@@ -42,7 +46,7 @@ void		find_zero_in_a(t_stack **st_b, t_stack **st_a, int radix);
 void		find_one_in_b(t_stack **st_b, t_stack **st_a, int radix);
 int			*check_and_parse(int argc, char **argv);
 void		check_dup(int *sorted);
-int			find_ind(int	*arr, int	nbr);
+int			find_ind(int *arr, int nbr, int size);
 
 void		sort_five_and_less(t_stack **stack_a, t_stack **stack_b);
 void		sort_four(t_stack **st_a, t_stack **st_b);

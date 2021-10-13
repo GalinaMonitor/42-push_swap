@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 12:38:01 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/09/06 12:42:15 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/10 16:18:33 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	move_sa(t_stack	**stack)
 	t_stack	*addr;
 	t_stack	*addr1;
 
-	printf("sa\n");
+	write(1, "sa\n", 3);
 	addr1 = stack[0]->next;
 	addr = stack[0]->next->next;
 	stack[0]->next->next = *stack;
@@ -30,7 +30,7 @@ void	move_sb(t_stack	**stack)
 	t_stack	*addr;
 	t_stack	*addr1;
 
-	printf("sb\n");
+	write(1, "sb\n", 3);
 	addr1 = stack[0]->next;
 	addr = stack[0]->next->next;
 	stack[0]->next->next = *stack;
@@ -42,7 +42,7 @@ void	move_pa(t_stack	**stack_a, t_stack	**stack_b)
 {
 	t_stack	*addr;
 
-	printf("pa\n");
+	write(1, "pa\n", 3);
 	addr = stack_b[0]->next;
 	stack_b[0]->next = stack_a[0];
 	stack_a[0] = stack_b[0];
@@ -53,7 +53,7 @@ void	move_pb(t_stack	**stack_b, t_stack	**stack_a)
 {
 	t_stack	*addr;
 
-	printf("pb\n");
+	write(1, "pb\n", 3);
 	addr = stack_b[0]->next;
 	stack_b[0]->next = stack_a[0];
 	stack_a[0] = stack_b[0];

@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 12:37:07 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/09/08 15:56:23 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/10 16:19:16 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	move_rra(t_stack	**stack)
 	temp = stack[0];
 	if (stack[0] == NULL)
 		return ;
-	printf("rra\n");
+	write(1, "rra\n", 4);
 	while (temp->next->next != NULL)
 		temp = temp->next;
 	temp->next->next = stack[0];
@@ -34,7 +34,7 @@ void	move_rrb(t_stack	**stack)
 	temp = stack[0];
 	if (stack[0] == NULL)
 		return ;
-	printf("rrb\n");
+	write(1, "rrb\n", 4);
 	while (temp->next->next != NULL)
 		temp = temp->next;
 	temp->next->next = stack[0];
@@ -49,7 +49,7 @@ void	move_ra(t_stack	**stack)
 	temp = stack[0];
 	if (stack[0] == NULL)
 		return ;
-	printf("ra\n");
+	write(1, "ra\n", 3);
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = stack[0];
@@ -64,7 +64,7 @@ void	move_rb(t_stack	**stack)
 	temp = stack[0];
 	if (stack[0] == NULL)
 		return ;
-	printf("rb\n");
+	write(1, "rb\n", 3);
 	while (temp->next != NULL)
 		temp = temp->next;
 	temp->next = stack[0];

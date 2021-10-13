@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:00:36 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/10/04 15:00:37 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:44:57 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,25 +72,25 @@ int	*check_and_parse(int argc, char **argv)
 			if (temp < -2147483648 || temp > 2147483647)
 			{
 				write(1, "Error", 5);
-				exit(1);
+				exit(NOTINT);
 			}
 			not_sorted[ind++] = (int)temp;
 		}
 		else
 		{
 			write(1, "Error", 5);
-			exit(1);
+			exit(NOTADIGIT);
 		}
 	}
 	return (not_sorted);
 }
 
-int	find_ind(int	*arr, int	nbr)
+int	find_ind(int *arr, int nbr, int size)
 {
 	int	res;
 
 	res = 0;
-	while (*arr)
+	while (size--)
 	{
 		if (*arr == nbr)
 			return (res);

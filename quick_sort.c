@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:02:10 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/10/04 15:06:07 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:23:54 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	quick_sort(int arr[], int left, int right)
 	int	pivot;
 	int	i;
 	int	j;
-	int	temp;
 
 	if (left >= right)
 		return ;
