@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:30:44 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/10/13 17:52:04 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/13 18:09:55 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	sort(t_stack **stack_a)
 	if (stack_length(stack_b[0]) > 0)
 		while (stack_b[0])
 			move_pa(stack_a, stack_b);
+	free(stack_b);
 }
 
 int	main(int argc, char **argv)
