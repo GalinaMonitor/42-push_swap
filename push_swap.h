@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 14:36:02 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/10/13 17:44:47 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:52:38 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			is_str_digit(char *str);
 void		find_zero_in_a(t_stack **st_b, t_stack **st_a, int radix);
 void		find_one_in_b(t_stack **st_b, t_stack **st_a, int radix);
 int			*check_and_parse(int argc, char **argv);
-void		check_dup(int *sorted);
+void		check_dup(int *sorted, int size);
 int			find_ind(int *arr, int nbr, int size);
 
 void		sort_five_and_less(t_stack **stack_a, t_stack **stack_b);

@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:30:44 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/10/13 17:43:36 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:52:04 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 	not_sorted = check_and_parse(argc, argv);
 	sorted = check_and_parse(argc, argv);
 	quick_sort(sorted, 0, argc - 2);
-	check_dup(sorted);
+	check_dup(sorted, argc - 1);
 	stack = fillstack(sorted, not_sorted, argc - 1);
 	sort(stack);
 	stackclear(*stack);

@@ -6,18 +6,18 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:00:41 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/10/13 17:45:08 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/13 17:52:21 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_dup(int *sorted)
+void	check_dup(int *sorted, int size)
 {
 	int	check_dup;
 
 	check_dup = 0;
-	while (sorted[1])
+	while (size--)
 	{
 		if (check_dup == *sorted)
 		{
