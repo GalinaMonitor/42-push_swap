@@ -13,11 +13,11 @@ WRONG_INPUT4="3 3 3"
 
 echo "Test using checker"
 
-./push_swap $STR_3 | ./checker_MAC $STR_3
-./push_swap $STR_5 | ./checker_MAC $STR_5
-./push_swap $STR_100 | ./checker_MAC $STR_100
-./push_swap $STR_500 | ./checker_MAC $STR_500
-./push_swap $STR_1000 | ./checker_MAC $STR_1000
+./push_swap $STR_3 | ./checker_linux $STR_3
+./push_swap $STR_5 | ./checker_linux $STR_5
+./push_swap $STR_100 | ./checker_linux $STR_100
+./push_swap $STR_500 | ./checker_linux $STR_500
+./push_swap $STR_1000 | ./checker_linux $STR_1000
 
 echo "Test amount of operations"
 

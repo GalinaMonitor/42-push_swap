@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 11:31:02 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/09/08 15:55:49 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/22 23:22:40 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	sort_five_and_less(t_stack **st_a, t_stack **st_b)
 {
-	int	ind;
-
-	ind = 0;
 	if (st_a[0] == NULL)
 		return ;
 	if (st_a[0]->next == NULL)
