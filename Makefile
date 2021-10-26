@@ -3,8 +3,8 @@ CC = gcc
 
 FLAGS = -Wall -Werror -Wextra
 
-DIR_LIBFT = libft/
-LIBFT = libft/libft.a
+DIR_LIBFT = libft/libft/
+LIBFT = libft/libft/libft.a
 
 HEADER = ./push_swap.h
 

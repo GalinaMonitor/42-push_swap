@@ -6,7 +6,7 @@
 /*   By: gmonitor <gmonitor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 14:36:02 by gmonitor          #+#    #+#             */
-/*   Updated: 2021/10/13 17:52:38 by gmonitor         ###   ########.fr       */
+/*   Updated: 2021/10/22 23:37:53 by gmonitor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 # include <stdio.h>
 # include <unistd.h>
-# include "libft/libft.h"
+# include "libft/libft/libft.h"
 # define NOARGS 1
 # define DOUBLEARGS 2
 # define NOTINT 3
